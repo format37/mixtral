@@ -7,6 +7,9 @@ services:
       args:
         max_jobs: 8
         nvcc_threads: 2
+    container_name: mixtral
+    ports:
+      - "8501:8501"
     volumes:
       - ./models:/app/models
     deploy:
@@ -16,6 +19,3 @@ services:
           - driver: nvidia
             device_ids: ['0']
             capabilities: [gpu]
-    # environment:
-    #   - NVIDIA_VISIBLE_DEVICES=all
-    #   - HUGGING_FACE_HUB_TOKEN=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
