@@ -1,5 +1,4 @@
-# mixtral
-Docker image for Mixtral
+# Docker image for Mixtral
 ### Installation
 ```
 git clone https://github.com/format37/mixtral.git
@@ -15,7 +14,7 @@ sh download_4bit.sh
 sh download_2bit.sh
 ```
 Set the corresponding model_id in app.py
-### Inference:
+### Inference
 ```
 sh compose.sh
 ```
@@ -43,7 +42,8 @@ mixtral_1  | 8. **Distribution and Sales:** Once the car has been built, it is t
 mixtral_1  | 
 mixtral_1  | Building a car is a complex process that requires a lot of expertise, resources, and time. It is important to have a clear understanding of the various stages involved in the process before starting production. By following a systematic approach, it is possible to build a high-quality car that meets all safety and performance standards.
 ```
-##### numbers for the base model and comparison with bitsandbytes
+### Comparison
+Numbers for the base model and (comparison)(https://huggingface.co/mobiuslabsgmbh/Mixtral-8x7B-Instruct-v0.1-hf-2bit_g16_s128-HQQ/discussions/1) with bitsandbytes
 ```
 Wikitext2 PPL/Memory: HQQ vs bitsandbytes (BNB)
 
@@ -61,4 +61,4 @@ Mixtral-8x7B-v0.1 / HQQ : 4.76 | (21.8 GB)
 #2-bit (group_size=16 | scale_g128/zero=8-bit):
 Mixtral-8x7B-v0.1 / HQQ : 5.90 | (18 GB)
 ```
-[source](https://huggingface.co/mobiuslabsgmbh/Mixtral-8x7B-Instruct-v0.1-hf-2bit_g16_s128-HQQ/discussions/1)
+Thanks to [Mobius Labs GmbH](https://huggingface.co/mobiuslabsgmbh)
