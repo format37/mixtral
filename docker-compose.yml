@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mixtral:
+    build:
+      context: .
+      args:
+        max_jobs: 8
+        nvcc_threads: 2
+    volumes:
+      - ./models:/app/models
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['0']
+            capabilities: [gpu]
+    # environment:
+    #   - NVIDIA_VISIBLE_DEVICES=all
+    #   - HUGGING_FACE_HUB_TOKEN=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
