@@ -12,6 +12,7 @@ HQQLinear.set_backend(HQQBackend.PYTORCH_COMPILE)
 #Load the model
 # model_id = './models/mobiuslabsgmbh/Mixtral-8x7B-Instruct-v0.1-hf-4bit_g64-HQQ'
 model_id = './models/mobiuslabsgmbh/Mixtral-8x7B-Instruct-v0.1-hf-2bit_g16_s128-HQQ/'
+
 logger.info("Loading tokenizer...")
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 logger.info("Loading model...")
