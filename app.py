@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from hqq.engine.hf import HQQModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM
 import logging
 from typing import List, Optional
 
@@ -15,15 +16,16 @@ logger.info("Setting backend...")
 from hqq.core.quantize import *
 HQQLinear.set_backend(HQQBackend.PYTORCH_COMPILE) 
 
-#Load the model
+logger.info("Loading model...")
 # model_id = './models/mobiuslabsgmbh/Mixtral-8x7B-Instruct-v0.1-hf-4bit_g64-HQQ/'
 model_id = './models/mobiuslabsgmbh/Mixtral-8x7B-Instruct-v0.1-hf-2bit_g16_s128-HQQ/'
+model     = HQQModelForCausalLM.from_quantized(model_id)
+
+# model_id = './models/TheBloke/Mixtral-8x7B-Instruct-v0.1-GPTQ/'
+# model     = AutoModelForCausalLM.from_pretrained(model_id)
 
 logger.info("Loading tokenizer...")
 tokenizer = AutoTokenizer.from_pretrained(model_id, use_fast=True)
-logger.info("Loading model...")
-model     = HQQModelForCausalLM.from_quantized(model_id)
-
 
 class ChatMessage(BaseModel):
     role: str = Field(..., description="Role of the message sender (e.g., 'user', 'assistant', 'system')")
